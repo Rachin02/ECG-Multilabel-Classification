@@ -21,7 +21,7 @@ Most prior models pick one view. ECG-FuseNet uses both, lets the model *learn ho
 
 The diagram below is the full architecture: a 10-second, 12-lead ECG (1000 samples × 12 leads) enters two parallel encoders, patient metadata joins in through its own small branch, everything is fused adaptively, and a 5-way sigmoid head produces the final diagnostic prediction.
 
-![ECG-FuseNet architecture](Final Model.png)
+![ECG-FuseNet architecture](./Final%20Model.png)
 
 ### 1. Temporal (Waveform) Encoder
 Learns morphology directly from the raw signal:
