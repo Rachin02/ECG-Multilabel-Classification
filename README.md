@@ -2,6 +2,8 @@
 
 **A compact, dual-domain deep learning framework for multi-label 12-lead ECG classification**
 
+🔗 **Live Demo:** [Try ECG-FuseNet](https://inference-ecg.streamlit.app/)
+
 ECG-FuseNet learns from a 12-lead ECG in two complementary ways at once — how the waveform *looks over time* and how its *frequency content changes* — and fuses the two views with a learned gate. It also folds in patient age/sex, and explains its own predictions with Grad-CAM. Despite combining three sources of information, the full model is only **~0.35M parameters**.
 
 ---
