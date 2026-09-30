@@ -97,10 +97,10 @@ To sanity-check the trained model beyond aggregate metrics, inference was run on
 | Record | Age | Sex | Actual Labels | Predicted Labels | Result |
 |---|---|---|---|---|---|
 | `00152_lr.dat` | 70 | 1 | MI, STTC | MI, STTC | ✅ Exact match |
-| `00347.dat` | 75 | 0 | HYP, STTC, CD | HYP, STTC, CD | ✅ Exact match |
-| `1314.dat` | 19 | 0 | NORM | NORM | ✅ Exact match |
-| `1317.dat` | 59 | 0 | MI, HYP | MI | ⚠️ Partial (HYP missed) |
-| `1235.dat` | 72 | 0 | MI, CD | MI, CD | ✅ Exact match |
+| `00347_lr.dat` | 75 | 0 | HYP, STTC, CD | HYP, STTC, CD | ✅ Exact match |
+| `01314_lr.dat` | 19 | 0 | NORM | NORM | ✅ Exact match |
+| `01317_lr.dat` | 59 | 0 | MI, HYP | MI | ⚠️ Partial (HYP missed) |
+| `01235_lr.dat` | 72 | 0 | MI, CD | MI, CD | ✅ Exact match |
 
 **Summary:** 4 of 5 records were predicted exactly. Across all 5 records, 9 of 10 true labels were recovered with no false positives. The single miss is HYP on `1317.dat`, which is consistent with the quantitative results above, where HYP is the hardest class (high AUROC but lower F1 due to class imbalance).
 
@@ -122,4 +122,3 @@ To sanity-check the trained model beyond aggregate metrics, inference was run on
 - Age/sex effects haven't been studied via subgroup analysis yet.
 - Inference time, memory footprint, and hardware latency are not yet benchmarked.
 
-Planned next steps: repeated-run statistical validation, calibration analysis, harmonized external validation, subgroup evaluation, and direct compute-cost measurements.
