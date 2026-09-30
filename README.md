@@ -90,6 +90,22 @@ At **~0.35M parameters**, ECG-FuseNet is roughly **50–70× smaller** than comp
 
 ---
 
+## Inference Testing on PTB-XL
+
+To sanity-check the trained model beyond aggregate metrics, inference was run on a handful of individual PTB-XL records. Each row shows the patient metadata fed to the model, the ground-truth diagnostic superclasses, and the model's prediction (after per-class thresholding).
+
+| Record | Age | Sex | Actual Labels | Predicted Labels | Result |
+|---|---|---|---|---|---|
+| `00152_lr.dat` | 70 | 1 | MI, STTC | MI, STTC | ✅ Exact match |
+| `00347.dat` | 75 | 0 | HYP, STTC, CD | HYP, STTC, CD | ✅ Exact match |
+| `1314.dat` | 19 | 0 | NORM | NORM | ✅ Exact match |
+| `1317.dat` | 59 | 0 | MI, HYP | MI | ⚠️ Partial (HYP missed) |
+| `1235.dat` | 72 | 0 | MI, CD | MI, CD | ✅ Exact match |
+
+**Summary:** 4 of 5 records were predicted exactly. Across all 5 records, 9 of 10 true labels were recovered with no false positives. The single miss is HYP on `1317.dat`, which is consistent with the quantitative results above, where HYP is the hardest class (high AUROC but lower F1 due to class imbalance).
+
+> **Note:** Sex is encoded as in PTB-XL (0 = male, 1 = female). These are qualitative examples, not a substitute for the full test-set evaluation.
+> 
 ## Key takeaways
 
 1. **Two views beat one** — combining waveform and time-frequency representations gives a fuller picture of the ECG than either alone.
